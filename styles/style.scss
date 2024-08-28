@@ -1,0 +1,70 @@
+$background-color: #f4f4f4;
+$container-bg-color: #fff;
+$primary-color: #28a745;
+$hover-color: darken($primary-color, 10%);
+$text-color: #888;
+$border-color: #ddd;
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $background-color;
+  padding: 20px;
+}
+
+.todo-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: $container-bg-color;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+input[type="text"] {
+  width: calc(100% - 90px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid $border-color;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: $primary-color;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+  span.done {
+    text-decoration: line-through;
+    color: $text-color;
+  }
+}

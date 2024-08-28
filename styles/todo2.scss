@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    color: #e0e0e0;
+}
+
+i {
+    pointer-events: none;
+}
+
+body {
+    background: linear-gradient(0.75turn, #6dbfe2, #ebf8e1, #eeba82);
+}
+
+header {
+    height: 20vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    h1 {
+        color: #807979;
+        font-size: 3rem;
+    }
+}
+
+.todo-container {
+    div button {
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.75rem;
+        cursor: pointer;
+        color: white;
+        background-color: #eeba82;
+    }
+
+    div:first-child {
+        form {
+            input {
+                border: none;
+                padding: 0.25rem 0.5rem;
+                font-size: 1.75rem;
+                margin: 0.1rem;
+            }
+
+            // 隱藏number arrow，search keywords "input number arrows remove and copy the code on w3school"
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input[type="number"] {
+                width: 50px;
+                text-align: center;
+                -moz-appearance: textfield;
+            }
+        }
+    }
+
+    .sort {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin: 1rem 0rem;
+
+    }
+
+    section {
+        div.todo {
+            margin: 0.2rem 0rem;
+            transition: all 0.1s ease;
+
+            p.todo-text {
+                white-space: normal;
+            }
+
+            p {
+                background-color: #fff;
+                color: black;
+                padding: 0.25rem 0.75rem;
+                font-size: 1.75rem;
+            }
+
+            button {
+                padding: 0.25rem 0.5rem;
+                font-size: 1.75rem;
+                border: none;
+                cursor: pointer;
+                color: white;
+            }
+
+            button.complete {
+                background-color: rgb(21, 126, 73);
+            }
+
+            button.trash {
+                background-color: rgb(253, 116, 4);
+            }
+        }
+    }
+}
+
+.done {
+    opacity: 0.5;
+    text-decoration: line-through;
+    text-decoration-thickness: 0.2rem;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleDown {
+    to {
+        transform: scale(0);
+    }
+}
