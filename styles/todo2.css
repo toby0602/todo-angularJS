@@ -37,7 +37,6 @@ header h1 {
   font-size: 1.75rem;
   cursor: pointer;
   color: white;
-  background-color: #eeba82;
 }
 .todo-container div:first-child form {
   /* Chrome, Safari, Edge, Opera */
@@ -68,27 +67,44 @@ header h1 {
   margin: 0.2rem 0rem;
   transition: all 0.1s ease;
 }
-.todo-container section div.todo p.todo-text {
-  white-space: normal;
-}
-.todo-container section div.todo p {
+.todo-container section div.todo div p {
   background-color: #fff;
   color: black;
   padding: 0.25rem 0.75rem;
   font-size: 1.75rem;
 }
-.todo-container section div.todo button {
+.todo-container section div.todo div p.todo-text {
+  word-wrap: break-word;
+  width: 450px;
+}
+.todo-container section div.todo div p:last-of-type {
+  width: 150px;
+}
+.todo-container section div.todo div button {
   padding: 0.25rem 0.5rem;
   font-size: 1.75rem;
   border: none;
   cursor: pointer;
   color: white;
+  border-radius: 5px;
 }
-.todo-container section div.todo button.complete {
+.todo-container section div.todo div button.edit {
+  background-color: rgb(38, 125, 187);
+}
+.todo-container section div.todo div button.edit:hover {
+  background-color: rgba(38, 125, 187, 0.4);
+}
+.todo-container section div.todo div button.complete {
   background-color: rgb(21, 126, 73);
 }
-.todo-container section div.todo button.trash {
+.todo-container section div.todo div button.complete:hover {
+  background-color: rgb(26, 167, 141);
+}
+.todo-container section div.todo div button.trash {
   background-color: rgb(253, 116, 4);
+}
+.todo-container section div.todo div button.trash:hover {
+  background-color: rgb(253, 170, 4);
 }
 
 .done {
