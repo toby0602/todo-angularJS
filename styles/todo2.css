@@ -64,21 +64,26 @@ header h1 {
   margin: 1rem 0rem;
 }
 .todo-container section div.todo {
-  margin: 0.2rem 0rem;
   transition: all 0.1s ease;
+  animation: scaleUp 0.5s ease-in-out;
 }
-.todo-container section div.todo div p {
+.todo-container section div.todo div span {
   background-color: #fff;
   color: black;
   padding: 0.25rem 0.75rem;
   font-size: 1.75rem;
 }
-.todo-container section div.todo div p.todo-text {
+.todo-container section div.todo div span.todo-text {
   word-wrap: break-word;
-  width: 450px;
+  width: 70%;
 }
-.todo-container section div.todo div p:last-of-type {
-  width: 150px;
+@media (max-width: 435px) {
+  .todo-container section div.todo div span.todo-text {
+    width: 60%;
+  }
+}
+.todo-container section div.todo div span:last-of-type {
+  min-width: 110px;
 }
 .todo-container section div.todo div button {
   padding: 0.25rem 0.5rem;
@@ -97,11 +102,21 @@ header h1 {
 .todo-container section div.todo div button.complete {
   background-color: rgb(21, 126, 73);
 }
+@media (max-width: 576px) {
+  .todo-container section div.todo div button.complete {
+    width: 60px;
+  }
+}
 .todo-container section div.todo div button.complete:hover {
   background-color: rgb(26, 167, 141);
 }
 .todo-container section div.todo div button.trash {
   background-color: rgb(253, 116, 4);
+}
+@media (max-width: 576px) {
+  .todo-container section div.todo div button.trash {
+    width: 60px;
+  }
 }
 .todo-container section div.todo div button.trash:hover {
   background-color: rgb(253, 170, 4);

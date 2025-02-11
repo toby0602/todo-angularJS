@@ -84,25 +84,29 @@ header {
 
   section {
     div.todo {
-      margin: 0.2rem 0rem;
+      // margin: 0.2rem 0rem;
       transition: all 0.1s ease;
+      animation: scaleUp 0.5s ease-in-out;
       div {
-        p {
+        span {
           background-color: #fff;
           color: black;
           padding: 0.25rem 0.75rem;
           font-size: 1.75rem;
         }
-
-        p.todo-text {
+  
+        span.todo-text {
           word-wrap: break-word;
-          width: 450px;
+          width: 70%;
+          @media (max-width: 435px) {
+            width: 60%;
+          }
         }
-
-        p:last-of-type {
-          width: 150px;
+  
+        span:last-of-type {
+          min-width: 110px;
         }
-
+  
         button {
           padding: 0.25rem 0.5rem;
           font-size: 1.75rem;
@@ -111,23 +115,31 @@ header {
           color: white;
           border-radius: 5px;
         }
-
+  
         button.edit {
           background-color: rgb(38, 125, 187);
           &:hover {
             background-color: rgba(38, 125, 187, 0.4);
           }
         }
-
+  
         button.complete {
           background-color: rgb(21, 126, 73);
+          @media (max-width: 576px) {
+            width: 60px;
+          }
+
           &:hover {
             background-color: rgb(26, 167, 141);
           }
         }
-
+  
         button.trash {
           background-color: rgb(253, 116, 4);
+          @media (max-width: 576px) {
+            width: 60px;
+          }
+
           &:hover {
             background-color: rgb(253, 170, 4);
           }

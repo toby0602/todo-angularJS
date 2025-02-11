@@ -1,6 +1,6 @@
 var app = angular.module('todoApp', []);
 
-app.controller('TodoController', function ($scope) {
+app.controller('TodoController', function ($scope, $timeout) {
     $scope.selectedTodo = null;
     $scope.maxDate = 31; // 預設最大值
     $scope.newTodo = { month: null, date: null };
@@ -38,6 +38,10 @@ app.controller('TodoController', function ($scope) {
         $scope.newTodo.text = '';
         $scope.newTodo.month = '';
         $scope.newTodo.date = '';
+
+        $timeout(function () {
+            document.getElementById('todoInput').focus();
+        }, 0);
     };
 
     // 切換完成狀態
@@ -48,9 +52,8 @@ app.controller('TodoController', function ($scope) {
 
     // 開啟彈窗
     $scope.openEditModal = function(todo) {
-        console.log('openEditModal todo', todo);
         $scope.selectedTodo = angular.copy(todo); // 避免直接修改原始數據
-        $scope.updateMaxDate();
+        $scope.updateMaxDate()
         $('#editModal').modal('show'); // 使用 jQuery 觸發 Bootstrap Modal
     };
 
@@ -64,16 +67,16 @@ app.controller('TodoController', function ($scope) {
 
     // 保存編輯
     $scope.saveEdit = function () {
-        console.log('selectedTodo', $scope.selectedTodo);
         if($scope.selectedTodo.date > $scope.maxDate || !$scope.selectedTodo.date){
-            return alert('請輸入正確日期!')
+            alert('請輸入正確日期!');
+            $timeout(function () {
+                document.getElementById('selectedTodoDate').focus();
+            }, 0);
+            return
         }
-        // console.log(list);
-        // localStorage.setItem('list', JSON.stringify($scope.todos));
 
         if ($scope.selectedTodo) {
             let index = $scope.todos.findIndex(t => t.id === $scope.selectedTodo.id);
-            console.log(123, index);
             if (index !== -1) {
                 $scope.todos[index] = angular.copy($scope.selectedTodo);
             }
@@ -140,8 +143,8 @@ app.controller('TodoController', function ($scope) {
         }
     }
 
-    $scope.updateMaxDate = function () {
-        const month = $scope.newTodo.month;
+    $scope.updateMaxDate = function (type) {
+        let month = type =='newTodo'? $scope.newTodo.month : $scope.selectedTodo.month;
         
         // 使用對應關係來設定最大天數
         const daysInMonth = {
