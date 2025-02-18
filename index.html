@@ -39,7 +39,7 @@
         <section class="d-flex justify-content-center flex-wrap px-2">
             <div class="todo d-flex text-start row mb-2 col-12 col-md-8" ng-repeat="todo in todos track by $index">
                 <!-- 顯示模式 -->
-                <div class="d-flex justify-content-center flex-wrap flex-sm-nowrap mb-2 mb-sm-0" ng-if="!todo.isEditing" ng-dblclick="openEditModal(todo)" title="點擊兩下編輯">
+                <div id="tooltip" class="d-flex justify-content-center flex-wrap flex-sm-nowrap mb-2 mb-sm-0" ng-if="!todo.isEditing" ng-mousedown="handleEvent($event, 'openEditModal', todo)" ng-touchstart="handleEvent($event, 'openEditModal', todo)" title="點擊兩下編輯">
                     <span class="todo-text form-control me-1" ng-class="{done: todo.done}">{{todo.text}}</span>
                     <span class="todo-time form-control me-1 text-center w-auto" ng-class="{done: todo.done}">
                         {{todo.month}} / {{todo.date}}
@@ -53,6 +53,7 @@
                 </div>
             </div>
         </section>
+        
     </div>
     <!-- 彈窗 -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">

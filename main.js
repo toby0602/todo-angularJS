@@ -4,6 +4,9 @@ app.controller('TodoController', function ($scope, $timeout) {
     $scope.selectedTodo = null;
     $scope.maxDate = 31; // 預設最大值
     $scope.newTodo = { month: null, date: null };
+    let lastTap = 0;
+    // 偵測是否為觸控裝置
+    $scope.touch = !('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
     // 初始化 ToDo 列表
     $scope.todos = JSON.parse(localStorage.getItem('list')) || [];
@@ -54,7 +57,19 @@ app.controller('TodoController', function ($scope, $timeout) {
     $scope.openEditModal = function(todo) {
         $scope.selectedTodo = angular.copy(todo); // 避免直接修改原始數據
         $scope.updateMaxDate()
-        $('#editModal').modal('show'); // 使用 jQuery 觸發 Bootstrap Modal
+        $('#editModal').modal('show');
+    };
+
+    // 判斷設備
+    $scope.handleEvent = function ($event, fnName, ...params) {
+        $event.preventDefault();  // 阻止 Edge 內建手勢（例如縮放）
+        $event.stopPropagation(); // 避免冒泡影響其他事件
+        let currentTime = new Date().getTime();
+        let tapLength = currentTime - lastTap;
+        lastTap = currentTime;
+        if (tapLength < 300 && tapLength > 0) {
+            $scope[fnName](...params);
+        }
     };
 
     // 刪除 ToDo

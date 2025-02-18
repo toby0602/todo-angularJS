@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  touch-action: manipulation;
+}
+
 ::placeholder {
   color: #e0e0e0;
 }
